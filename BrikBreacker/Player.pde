@@ -2,7 +2,7 @@ class Player
 {
   float x, y;
   int speed, size;
-  boolean moveRight, moveLeft;
+  boolean moveRight, moveLeft, moveUp, moveDown;
   
   public Player(float x, float y, int speed, int size)
   {
@@ -12,16 +12,20 @@ class Player
     this.size = size;
     moveRight = false;
     moveLeft = false;
+    moveUp = false;
+    moveDown = false;
   }
   
   void show()
   {
+    fill(0);
+    noStroke();
     ellipse(x, y, size, size);
   }
   
   void move()
   {
-    if(moveRight && moveLeft)
+    if((moveRight && moveLeft) || moveUp || moveDown)
     {
       
     }

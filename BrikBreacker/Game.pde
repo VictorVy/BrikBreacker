@@ -23,6 +23,11 @@ void gameKP()
     case LEFT:
       player.moveLeft = true;
       break;
+    case UP:
+      player.moveUp = true;
+      break;
+    case DOWN:
+      player.moveDown = true;
   }
 }
 
@@ -36,5 +41,10 @@ void gameKR()
     case LEFT:
       player.moveLeft = false;
       break;
+    case UP:
+      player.moveUp = false;
+      break;
+    case DOWN:
+      player.moveDown = false;
   }
 }

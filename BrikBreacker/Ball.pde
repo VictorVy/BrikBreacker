@@ -15,6 +15,8 @@ class Ball
   
   void move()
   {
+    fill(0);
+    noStroke();
     ellipse(x, y, size, size);
     
     x += speedX;
@@ -35,6 +37,12 @@ class Ball
     else if(y >= height - size / 2)
     {
       speedY = -abs(speedY);
+    }
+    
+    if(dist(x, y, player.x, player.y) < (size / 2 + player.size /2))
+    {
+      speedX = (int)(x - player.x) / 10;
+      speedY = (int)(y - player.y) / 10;
     }
   }
 }
