@@ -1,16 +1,17 @@
 class Ball
 {
   float x, y;
-  int speedX, speedY;
+  int speed;
   int size;
+  int dir;
   
-  public Ball(float x, float y, int speedX, int speedY, int size)
+  public Ball(float x, float y, int speed, int size)
   {
     this.x = x;
     this.y = y;
-    this.speedX = speedX;
-    this.speedY = speedY;
+    this.speed = speed;
     this.size = size;
+    dir = 0;
   }
   
   void move()
@@ -19,30 +20,32 @@ class Ball
     noStroke();
     ellipse(x, y, size, size);
     
-    x += speedX;
-    y += speedY;
+    pushMatrix();
+    rotate(radians(dir));
+    translate(0, speed);
+    popMatrix();
     
     if(x <= 0 + size / 2)
     {
-      speedX = abs(speedX);
+      //speedX = abs(speedX);
     }
     else if(x >= width - size / 2)
     {
-      speedX = -abs(speedX);
+      //speedX = -abs(speedX);
     }
     if(y <= 0 + size / 2)
     {
-      speedY = abs(speedY);
+      //speedY = abs(speedY);
     }
     else if(y >= height - size / 2)
     {
-      speedY = -abs(speedY);
+      //speedY = -abs(speedY);
     }
     
     if(dist(x, y, player.x, player.y) < (size / 2 + player.size / 2))
     {
-      speedX = (int)(x - player.x) / 9;
-      speedY = (int)(y - player.y) / 9;
+      //speedX = (int)(x - player.x) / 9;
+      //speedY = (int)(y - player.y) / 9;
     }
   }
 }
