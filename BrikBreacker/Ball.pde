@@ -1,10 +1,10 @@
 class Ball
 {
   float x, y;
-  int speedX, speedY;
+  float speedX, speedY;
   int size;
   
-  public Ball(float x, float y, int speedX, int speedY, int size)
+  public Ball(float x, float y, float speedX, float speedY, int size)
   {
     this.x = x;
     this.y = y;
@@ -41,8 +41,8 @@ class Ball
     
     if(dist(x, y, player.x, player.y) < (size / 2 + player.size / 2))
     {
-      speedX = (int)(x - player.x) / 9;
-      speedY = (int)(y - player.y) / 9;
+      speedX = (x - player.x) / 9;
+      speedY = (y - player.y) / 9;
     }
   }
 }

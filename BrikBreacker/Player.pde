@@ -25,7 +25,7 @@ class Player
   
   void move()
   {
-    if((moveRight && moveLeft) || moveUp || moveDown)
+    if(moveRight && moveLeft)
     {
       
     }
@@ -38,6 +38,19 @@ class Player
       x -= speed;
     }
     
+    if(moveUp && moveDown)
+    {
+      
+    }
+    else if(moveUp)
+    {
+      y -= speed / 1.5;
+    }
+    else if(moveDown)
+    {
+      y += speed / 1.5;
+    }
+    
     if(x < size / 2)
     {
       x = size / 2;
@@ -45,6 +58,15 @@ class Player
     else if(x > width - size / 2)
     {
       x = width - size / 2;
+    }
+    
+    if(y < height - 40)
+    {
+      y = height - 40;
+    }
+    else if(y > height + 10)
+    {
+      y = height + 10;
     }
   }
 }

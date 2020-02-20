@@ -8,6 +8,7 @@ Ball ball;
 Player player;
 
 ArrayList<Brik> myBriks;
+int k = 60;
 
 void setup()
 {
@@ -15,12 +16,26 @@ void setup()
   
   myBriks = new ArrayList<Brik>();
   
-  ball = new Ball(random(0, width), random(height / 2.5, height - 50), 4, 2, 15);
-  player = new Player(width / 2, height + 5, 3, 75);
+  ball = new Ball(width / 2, random(height / 2, height - 50), 0, 4.5, 15);
+  player = new Player(width / 2, height + 10, 3, 75);
   
-  for(int i = 0; i < 44; i++)
-  {
-    myBriks.add(new Brik(random(0, width), random(0, height / 2.5), random(30, 50), 1));
+  for(int i = 80; i < width; i += 80)
+  { 
+    while(k < height / 2)
+    {
+      myBriks.add(new Brik(i, k, 50, 2));
+      
+      k += 60;
+    }
+    
+    if(k % 60 == 0)
+    {
+      k = 85;
+    }
+    else
+    {
+      k = 60;
+    }
   }
 }
 
