@@ -1,13 +1,12 @@
 class Player
 {
-  float x, y;
+  PVector position;
   int speed, size;
   boolean moveRight, moveLeft, moveUp, moveDown;
   
   public Player(float x, float y, int speed, int size)
   {
-    this.x = x;
-    this.y = y;
+    position = new PVector(x, y);
     this.speed = speed;
     this.size = size;
     moveRight = false;
@@ -20,7 +19,7 @@ class Player
   {
     fill(0);
     noStroke();
-    ellipse(x, y, size, size);
+    ellipse(position.x, position.y, size, size);
   }
   
   void move()
@@ -31,11 +30,11 @@ class Player
     }
     else if(moveRight)
     {
-      x += speed;
+      position.x += speed;
     }
     else if(moveLeft)
     {
-      x -= speed;
+      position.x -= speed;
     }
     
     if(moveUp && moveDown)
@@ -44,29 +43,29 @@ class Player
     }
     else if(moveUp)
     {
-      y -= speed / 1.5;
+      position.y -= speed / 1.5;
     }
     else if(moveDown)
     {
-      y += speed / 1.5;
+      position.y += speed / 1.5;
     }
     
-    if(x < size / 2)
+    if(position.x < size / 2)
     {
-      x = size / 2;
+      position.x = size / 2;
     }
-    else if(x > width - size / 2)
+    else if(position.x > width - size / 2)
     {
-      x = width - size / 2;
+      position.x = width - size / 2;
     }
     
-    if(y < height - 40)
+    if(position.y < height - 40)
     {
-      y = height - 40;
+      position.y = height - 40;
     }
-    else if(y > height + 10)
+    else if(position.y > height + 10)
     {
-      y = height + 10;
+      position.y = height + 10;
     }
   }
 }

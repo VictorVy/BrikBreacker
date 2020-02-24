@@ -9,6 +9,8 @@ void game()
   }
   
   ball.move();
+  ball.appear();
+  ball.collisionCheck();
   
   player.show();
   player.move();

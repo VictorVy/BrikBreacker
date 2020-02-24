@@ -16,7 +16,7 @@ void setup()
   
   myBriks = new ArrayList<Brik>();
   
-  ball = new Ball(width / 2, random(height / 2, height - 50), 4.5, 180, 15);
+  ball = new Ball(width / 2, random(height / 2, height - 50), 0, 4, 15);
   player = new Player(width / 2, height + 10, 3, 75);
   
   for(int i = 80; i < width; i += 80)

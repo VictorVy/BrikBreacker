@@ -40,14 +40,14 @@ class Brik
   {
     if(hp > 0)
     {
-      if(dist(x, y, ball.x, ball.y) < size / 2 + 6)
-      {
-        hp -= 1;
+      //if(dist(x, y, ball.x, ball.y) < size / 2 + 6)
+      //{
+      //  hp -= 1;
         
         // ball collision
         //ball.speedX = (int)((ball.x - x) / 5.65);
         //ball.speedY = (int)((ball.y - y) / 5.5);
-      }
+      //}
     }
   }
 }

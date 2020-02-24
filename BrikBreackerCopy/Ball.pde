@@ -1,55 +1,61 @@
 class Ball
 {
-  float x, y;
-  float speed;
+  PVector position;
+  PVector speed;
   float direction;
   int size;
   
-  public Ball(float x, float y, float speed, float direction, int size)
+  float playerDist;
+  PVector playerDistVect;
+  
+  public Ball(float x, float y, float speedX, float speedY, int size)
   {
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
-    this.direction = direction;
+    position = new PVector(x, y);
+    speed = new PVector(speedX, speedY);
     this.size = size;
+  }
+  
+  void appear()
+  {
+    fill(0);
+    noStroke();
+    ellipse(position.x, position.y, size, size);
   }
   
   void move()
   {
-    fill(0);
-    noStroke();
-    ellipse(x, y, size, size);
-    
-    pushMatrix();
-    rotate(radians(direction));
-    
-    y -= speed;
-    
-    popMatrix();
-    
-    // wall collision
-    //if(x <= 0 + size / 2)
-    //{
-    //  speedX = abs(speedX);
-    //}
-    //else if(x >= width - size / 2)
-    //{
-    //  speedX = -abs(speedX);
-    //}
-    //if(y <= 0 + size / 2)
-    //{
-    //  speedY = abs(speedY);
-    //}
-    //else if(y >= height - size / 2)
-    //{
-    //  speedY = -abs(speedY);
-    //}
-    
-    if(dist(x, y, player.x, player.y) < (size / 2 + player.size / 2))
+    position.add(speed);
+  }
+  
+  void collisionCheck()
+  {
+    // walls
+    if(position.x <= 0 + size / 2)
     {
-      // player collision
-      //speedX = (x - player.x) / 9;
-      //speedY = (y - player.y) / 9;
+      speed.x = abs(speed.x);
+    }
+    else if(position.x >= width - size / 2)
+    {
+      speed.x = -abs(speed.x);
+    }
+    if(position.y <= 0 + size / 2)
+    {
+      speed.y = abs(speed.y);
+    }
+    else if(position.y >= height - size / 2)
+    {
+      speed.y = -abs(speed.y);
+    }
+    
+    // player
+    playerDistVect = PVector.sub(player.position, position);
+    playerDist = playerDistVect.mag();
+    
+    if(playerDist <= size / 2 + player.size / 2)
+    {
+      // reflect angle
+      speed.x = (position.x - player.position.x) / 9;
+      speed.y = (position.y - player.position.y) / 9;
     }
   }
 }
