@@ -2,16 +2,16 @@ void game()
 {
   background(225);
   
+  ball.move();
+  
+  player.show();
+  player.move();
+  
   for(Brik i : myBriks)
   {
     i.appear();
     i.collide();
   }
-  
-  ball.move();
-  
-  player.show();
-  player.move();
 }
 
 void gameMR()

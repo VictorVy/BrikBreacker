@@ -1,53 +1,55 @@
 class Brik
 {
-  float x, y;
+  PVector position;
   float size;
   int hp;
   
+  PVector ballDistVect;
+  float ballDist;
+  
   public Brik(float x, float y, float size, int hp)
   {
-    this.x = x;
-    this.y = y;
+    position = new PVector(x, y);
     this.size = size;
     this.hp = hp;
   }
   
   void appear()
   {
+    stroke(0);
+    strokeWeight(1);
+    
     if(hp == 2)
     {
       fill(0);
-      stroke(0);
-      strokeWeight(2);
     }
     else if(hp == 1)
     {
       fill(125);
-      stroke(0);
-      strokeWeight(2);
     }
     else if(hp == 0)
     {
       noFill();
-      stroke(0);
-      strokeWeight(2);
     }
     
-    ellipse(x, y, size, size);
+    ellipse(position.x, position.y, size, size);
   }
   
   void collide()
   {
     if(hp > 0)
     {
-      //if(dist(x, y, ball.x, ball.y) < size / 2 + 6)
-      //{
-      //  hp -= 1;
+      // ball
+      ballDistVect = PVector.sub(ball.position, position);
+      ballDist = ballDistVect.mag();
+      
+      if(ballDist <= size / 2 + ball.size / 2)
+      {
+        hp -= 1;
         
-        // ball collision
-        //ball.speedX = (int)((ball.x - x) / 5.65);
-        //ball.speedY = (int)((ball.y - y) / 5.5);
-      //}
+        ball.normalVect = PVector.sub(ball.position, position);
+        ball.speedVect = ball.normalVect.normalize().mult(ball.speedScalar);
+      }
     }
   }
 }

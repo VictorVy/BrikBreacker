@@ -14,26 +14,16 @@ class Brik
   
   void appear()
   {
-    if(hp == 2)
+    if(hp > 0)
     {
-      fill(0);
-      stroke(0);
-      strokeWeight(2);
+      if(hp == 2)
+        fill(0);
+      else if(hp == 1)
+        fill(125);
+      noStroke();
+      
+      ellipse(x, y, size, size);
     }
-    else if(hp == 1)
-    {
-      fill(125);
-      stroke(0);
-      strokeWeight(2);
-    }
-    else if(hp == 0)
-    {
-      noFill();
-      stroke(0);
-      strokeWeight(2);
-    }
-    
-    ellipse(x, y, size, size);
   }
   
   void collide()

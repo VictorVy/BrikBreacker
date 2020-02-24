@@ -1,17 +1,23 @@
 class Ball
 {
   PVector position;
-  PVector speed;
+  PVector speedVect;
+  float speedScalar;
   float direction;
   int size;
   
   float playerDist;
   PVector playerDistVect;
+  PVector normalVect;
+  float angleDiff;
+  PVector bounceVect;
+  float normalAngle;
   
-  public Ball(float x, float y, float speedX, float speedY, int size)
+  public Ball(float x, float y, float run, float rise, float speedScalar, int size)
   {
     position = new PVector(x, y);
-    speed = new PVector(speedX, speedY);
+    this.speedScalar = speedScalar;
+    speedVect = new PVector(run, rise).mult(speedScalar);
     this.size = size;
   }
   
@@ -24,7 +30,7 @@ class Ball
   
   void move()
   {
-    position.add(speed);
+    position.add(speedVect);
   }
   
   void collisionCheck()
@@ -32,19 +38,19 @@ class Ball
     // walls
     if(position.x <= 0 + size / 2)
     {
-      speed.x = abs(speed.x);
+      speedVect.x = abs(speedVect.x);
     }
     else if(position.x >= width - size / 2)
     {
-      speed.x = -abs(speed.x);
+      speedVect.x = -abs(speedVect.x);
     }
     if(position.y <= 0 + size / 2)
     {
-      speed.y = abs(speed.y);
+      speedVect.y = abs(speedVect.y);
     }
     else if(position.y >= height - size / 2)
     {
-      speed.y = -abs(speed.y);
+      speedVect.y = -abs(speedVect.y);
     }
     
     // player
@@ -53,9 +59,17 @@ class Ball
     
     if(playerDist <= size / 2 + player.size / 2)
     {
-      // reflect angle
-      speed.x = (position.x - player.position.x) / 9;
-      speed.y = (position.y - player.position.y) / 9;
+      normalVect = PVector.sub(position, player.position);
+      angleDiff = abs(speedVect.heading() - normalVect.heading());
+      
+      normalAngle = degrees(normalVect.heading());
+      if(normalAngle > 0 && normalAngle < 90)
+      {
+        
+      }
+      bounceVect = 
+      
+      speedVect = normalVect.normalize().mult(speedScalar);
     }
   }
 }
