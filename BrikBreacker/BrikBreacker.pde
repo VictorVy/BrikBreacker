@@ -6,12 +6,22 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 Minim minim;
+AudioPlayer introFX;
+AudioPlayer sizeUp;
+AudioPlayer sizeDown;
+AudioPlayer start;
+AudioPlayer loseLife;
+AudioPlayer playerHit;
+AudioPlayer brikHit;
+AudioPlayer wallHit;
+AudioPlayer loseFX;
+AudioPlayer winFX;
 
 final int intro = 0;
 final int game  = 1;
 final int lose = 2;
 final int win = 3;
-int mode = win;
+int mode = intro;
 
 color red = #C61A1A;
 
@@ -37,7 +47,7 @@ int kills;
 
 void setup()
 {
-  size(800, 600);
+  size(800, 600, FX2D);
   minim = new Minim(this);
   
   textAlign(CENTER, CENTER);
