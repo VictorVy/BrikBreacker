@@ -4,10 +4,10 @@ void mouseReleased()
     introMR();
   else if(mode == game)
     gameMR();
-  else if(mode == gameOver)
-    gameOverMR();
-  else if(mode == pause) 
-    pauseMR();
+  else if(mode == lose)
+    loseMR();
+  else if(mode == win) 
+    winMR();
   else
     println("Mode Error");
 }
@@ -18,10 +18,10 @@ void keyPressed()
     introKP();
   else if(mode == game)
     gameKP();
-  else if(mode == gameOver)
-    gameOverKP();
-  else if(mode == pause) 
-    pauseKP();
+  else if(mode == lose)
+    loseKP();
+  else if(mode == win) 
+    winKP();
   else
     println("Mode Error");
 }
@@ -32,10 +32,10 @@ void keyReleased()
     introKR();
   else if(mode == game)
     gameKR();
-  else if(mode == gameOver)
-    gameOverKR();
-  else if(mode == pause) 
-    pauseKR();
+  else if(mode == lose)
+    loseKR();
+  else if(mode == win) 
+    winKR();
   else
     println("Mode Error");
 }

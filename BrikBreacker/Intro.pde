@@ -8,9 +8,10 @@ void intro()
   }
   
   ball.appear();
-  player.move();
+  player.change();
   player.show();
   
+  noStroke();
   fill(255, introAlpha);
   if((dist(width / 2, height / 1.5 + 45, mouseX, mouseY) < 70) || (keyPressed && key == ' '))
   {
@@ -37,11 +38,21 @@ void intro()
   textSize(15);
   fill(0);
   text("to start", width / 2, height / 1.5 + 70);
+  
+  fill(0, introFadeAlpha);
+  noStroke();
+  rect(0, 0, width, height);
+  
+  if(introFadeAlpha >= 0)
+  {
+    introFadeAlpha -= introFadeAlphaAccel;
+    introFadeAlphaAccel += 0.05;
+  }
 }
 
 void introMR()
 {
-  if(dist(width / 2, height / 1.5 + 45, mouseX, mouseY) < 70)
+  if((dist(width / 2, height / 1.5 + 45, mouseX, mouseY) < 70) && introFadeAlpha <= 0)
   {
     introAlpha = 255;
     
@@ -66,7 +77,21 @@ void introKP()
       player.moveDown = true;
   }
   
-  
+  switch(key)
+  {
+    case 'd':
+      player.moveRight = true;
+      break;
+    case 'a':
+      player.moveLeft = true;
+      break;
+    case 'w':
+      player.moveUp = true;
+      break;
+    case 's':
+      player.moveDown = true;
+      break;
+  }
 }
 
 void introKR()
@@ -86,7 +111,23 @@ void introKR()
       player.moveDown = false;
   }
   
-  if(key == ' ')
+  switch(key)
+  {
+    case 'd':
+      player.moveRight = false;
+      break;
+    case 'a':
+      player.moveLeft = false;
+      break;
+    case 'w':
+      player.moveUp = false;
+      break;
+    case 's':
+      player.moveDown = false;
+      break;
+  }
+  
+  if(key == ' ' && introFadeAlpha <= 0)
   {
     introAlpha = 255;
     

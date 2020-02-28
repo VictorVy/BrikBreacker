@@ -1,8 +1,17 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+
 final int intro = 0;
 final int game  = 1;
-final int gameOver = 2;
-final int pause = 3;
-int mode = intro;
+final int lose = 2;
+final int win = 3;
+int mode = win;
 
 color red = #C61A1A;
 
@@ -11,14 +20,25 @@ PFont robomono;
 Ball ball;
 Player player;
 
-int introAlpha = 150;
+int introAlpha;
+float introFadeAlpha;
+float introFadeAlphaAccel;
+float gameOverAlpha;
+float gameOverAlphaAccel;
+float loseTextSize;
+float loseTextSizeAccel;
+float winTextSize;
+float winTextSizeAccel;
 
 ArrayList<Brik> myBriks;
 int k = 60;
 
+int kills;
+
 void setup()
 {
   size(800, 600);
+  minim = new Minim(this);
   
   textAlign(CENTER, CENTER);
   robomono = createFont("robomono.ttf", 24);
@@ -27,7 +47,7 @@ void setup()
   myBriks = new ArrayList<Brik>();
   
   ball = new Ball(width / 2, height / 1.75, 0, 1, 4, 15);
-  player = new Player(width / 2, height + 10, 3, 75);
+  player = new Player(width / 2, height + 10, 3, 75, 4);
   
   for(int i = 80; i < width; i += 80)
   { 
@@ -51,6 +71,18 @@ void setup()
       k = 60;
     }
   }
+  
+  introAlpha = 150;
+  introFadeAlpha = 255;
+  introFadeAlphaAccel = 0.5;
+  gameOverAlpha = 0;
+  gameOverAlphaAccel = 0.1;
+  loseTextSize = width / 2;
+  loseTextSizeAccel = 2;
+  winTextSize = 0;
+  winTextSizeAccel = 1;
+  
+  kills = 0;
 }
 
 void draw()
@@ -59,10 +91,10 @@ void draw()
     intro();
   else if(mode == game)
     game();
-  else if(mode == gameOver)
-    gameOver();
-  else if(mode == pause) 
-    pause();
+  else if(mode == lose)
+    lose();
+  else if(mode == win) 
+    win();
   else
     println("Mode Error");
 }

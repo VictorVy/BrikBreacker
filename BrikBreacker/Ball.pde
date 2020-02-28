@@ -51,6 +51,12 @@ class Ball
     }
     else if(position.y >= height - size / 2)
     {
+      player.hp--;
+      if(player.hp <= 0)
+      {
+        mode = lose;
+      }
+      
       speedVect.y = -abs(speedVect.y);
     }
   }

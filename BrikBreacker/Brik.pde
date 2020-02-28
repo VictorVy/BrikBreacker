@@ -47,6 +47,11 @@ class Brik
       {
         hp -= 1;
         
+        if(hp == 0)
+        {
+          kills++;
+        }
+        
         ball.normalVect = PVector.sub(ball.position, position);
         ball.speedVect = ball.normalVect.normalize().mult(ball.speedScalar);
       }

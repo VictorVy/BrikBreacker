@@ -32,6 +32,11 @@ void game()
   player.show();
   player.move();
   player.collide();
+  
+  if(kills >= myBriks.size())
+  {
+    mode = win;
+  }
 }
 
 void gameMR()
@@ -55,6 +60,22 @@ void gameKP()
     case DOWN:
       player.moveDown = true;
   }
+  
+  switch(key)
+  {
+    case 'd':
+      player.moveRight = true;
+      break;
+    case 'a':
+      player.moveLeft = true;
+      break;
+    case 'w':
+      player.moveUp = true;
+      break;
+    case 's':
+      player.moveDown = true;
+      break;
+  }
 }
 
 void gameKR()
@@ -72,5 +93,21 @@ void gameKR()
       break;
     case DOWN:
       player.moveDown = false;
+  }
+  
+  switch(key)
+  {
+    case 'd':
+      player.moveRight = false;
+      break;
+    case 'a':
+      player.moveLeft = false;
+      break;
+    case 'w':
+      player.moveUp = false;
+      break;
+    case 's':
+      player.moveDown = false;
+      break;
   }
 }
