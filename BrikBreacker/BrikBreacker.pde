@@ -1,11 +1,7 @@
 import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
 
 Minim minim;
+
 AudioPlayer introFX;
 AudioPlayer sizeUp;
 AudioPlayer sizeDown;
@@ -48,7 +44,19 @@ int kills;
 void setup()
 {
   size(800, 600, FX2D);
+  
   minim = new Minim(this);
+  
+  introFX = minim.loadFile("intro.wav");
+  sizeUp = minim.loadFile("sizeUp.wav");
+  sizeDown = minim.loadFile("sizeDown.wav");
+  start = minim.loadFile("start.wav");
+  loseLife = minim.loadFile("loseLife.wav");
+  playerHit = minim.loadFile("playerHit.wav");
+  brikHit = minim.loadFile("brikHit.wav");
+  wallHit = minim.loadFile("wallHit.wav");
+  loseFX = minim.loadFile("lose.wav");
+  winFX = minim.loadFile("win.wav");
   
   textAlign(CENTER, CENTER);
   robomono = createFont("robomono.ttf", 24);
@@ -67,7 +75,6 @@ void setup()
         myBriks.add(new Brik(i, k, 50, 1));
       else
         myBriks.add(new Brik(i, k, 50, 2));
-
       
       k += 60;
     }

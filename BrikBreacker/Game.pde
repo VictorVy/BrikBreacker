@@ -34,7 +34,7 @@ void game()
   player.collide();
   
   if(kills >= myBriks.size())
-  {
+  { 
     mode = win;
   }
 }

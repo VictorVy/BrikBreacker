@@ -56,6 +56,9 @@ void introMR()
   {
     introAlpha = 255;
     
+    start.rewind();
+    start.play();
+    
     mode = game;
   }
 }
@@ -131,6 +134,9 @@ void introKR()
   {
     introAlpha = 255;
     
+    start.rewind();
+    start.play();
+  
     mode = game;
   }
 }
