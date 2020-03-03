@@ -103,9 +103,13 @@ void introKR()
   {
     case RIGHT:
       player.moveRight = false;
+      
+      sizeUp.pause();
       break;
     case LEFT:
       player.moveLeft = false;
+      
+      sizeDown.pause();
       break;
     case UP:
       player.moveUp = false;
@@ -118,9 +122,13 @@ void introKR()
   {
     case 'd':
       player.moveRight = false;
+      
+      sizeUp.pause();
       break;
     case 'a':
       player.moveLeft = false;
+      
+      sizeDown.pause();
       break;
     case 'w':
       player.moveUp = false;

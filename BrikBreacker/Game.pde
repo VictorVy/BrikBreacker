@@ -35,6 +35,9 @@ void game()
   
   if(kills >= myBriks.size())
   { 
+    winFX.rewind();
+    winFX.play();
+    
     mode = win;
   }
 }

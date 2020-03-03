@@ -1,4 +1,9 @@
 import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
 
 Minim minim;
 
@@ -57,6 +62,9 @@ void setup()
   wallHit = minim.loadFile("wallHit.wav");
   loseFX = minim.loadFile("lose.wav");
   winFX = minim.loadFile("win.wav");
+  
+  introFX.rewind();
+  introFX.play();
   
   textAlign(CENTER, CENTER);
   robomono = createFont("robomono.ttf", 24);

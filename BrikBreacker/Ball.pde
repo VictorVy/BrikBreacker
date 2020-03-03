@@ -40,20 +40,35 @@ class Ball
     if(position.x <= 0 + size / 2)
     {
       speedVect.x = abs(speedVect.x);
+      
+      wallHit.rewind();
+      wallHit.play();
     }
     else if(position.x >= width - size / 2)
     {
       speedVect.x = -abs(speedVect.x);
+      
+      wallHit.rewind();
+      wallHit.play();
     }
     if(position.y <= 0 + size / 2)
     {
       speedVect.y = abs(speedVect.y);
+      
+      wallHit.rewind();
+      wallHit.play();
     }
     else if(position.y >= height - size / 2)
     {
+      loseLife.rewind();
+      loseLife.play();
+      
       player.hp--;
       if(player.hp <= 0)
       {
+        loseFX.rewind();
+        loseFX.play();
+        
         mode = lose;
       }
       

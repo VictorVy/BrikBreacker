@@ -66,6 +66,9 @@ class Player
     
     if(ball.playerDist <= ball.size / 2 + size / 2)
     {
+      playerHit.rewind();
+      playerHit.play();
+      
       ball.normalVect = PVector.sub(ball.position, position);
       //ball.normalAngle = degrees(ball.normalVect.heading());
       //ball.angleDiff = degrees(abs(ball.normalVect.heading() - ball.speedVect.heading()));
@@ -126,12 +129,15 @@ class Player
   {
     if(moveRight && moveLeft)
     {
-      
+      sizeUp.pause();
+      sizeDown.pause();
     }
     else if(moveRight)
     {
       if(size <= setSize + 30)
       {
+        sizeUp.loop();
+        
         size += 1;
       }
     }
@@ -139,6 +145,8 @@ class Player
     {
       if(size >= setSize - 30)
       {
+        sizeDown.loop();
+        
         size -= 1;
       }
   }

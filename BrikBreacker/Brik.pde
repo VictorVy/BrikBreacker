@@ -39,6 +39,9 @@ class Brik
   {
     if(hp > 0)
     {
+      brikHit.rewind();
+      brikHit.play();
+      
       // ball
       ballDistVect = PVector.sub(ball.position, position);
       ballDist = ballDistVect.mag();
