@@ -39,9 +39,6 @@ class Brik
   {
     if(hp > 0)
     {
-      brikHit.rewind();
-      brikHit.play();
-      
       // ball
       ballDistVect = PVector.sub(ball.position, position);
       ballDist = ballDistVect.mag();
@@ -57,6 +54,12 @@ class Brik
         
         ball.normalVect = PVector.sub(ball.position, position);
         ball.speedVect = ball.normalVect.normalize().mult(ball.speedScalar);
+        
+        if(!(kills >= myBriks.size()))
+        {
+          brikHit.rewind();
+          brikHit.play();
+        }
       }
     }
   }

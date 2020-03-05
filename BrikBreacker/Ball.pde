@@ -60,9 +60,6 @@ class Ball
     }
     else if(position.y >= height - size / 2)
     {
-      loseLife.rewind();
-      loseLife.play();
-      
       player.hp--;
       if(player.hp <= 0)
       {
@@ -71,6 +68,9 @@ class Ball
         
         mode = lose;
       }
+      
+      loseLife.rewind();
+      loseLife.play();
       
       speedVect.y = -abs(speedVect.y);
     }

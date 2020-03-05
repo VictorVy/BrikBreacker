@@ -8,6 +8,8 @@ void mouseReleased()
     loseMR();
   else if(mode == win) 
     winMR();
+  else if(mode == pause) 
+    pauseMR();
   else
     println("Mode Error");
 }
@@ -22,6 +24,8 @@ void keyPressed()
     loseKP();
   else if(mode == win) 
     winKP();
+  else if(mode == pause) 
+    pauseKP();
   else
     println("Mode Error");
 }
@@ -36,6 +40,8 @@ void keyReleased()
     loseKR();
   else if(mode == win) 
     winKR();
+  else if(mode == pause) 
+    pauseKR();
   else
     println("Mode Error");
 }

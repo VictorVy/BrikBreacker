@@ -129,14 +129,17 @@ class Player
   {
     if(moveRight && moveLeft)
     {
-      sizeUp.pause();
-      sizeDown.pause();
+      
     }
     else if(moveRight)
     {
       if(size <= setSize + 30)
       {
-        sizeUp.loop();
+        if(!sizeUp.isPlaying())
+        {
+          sizeUp.rewind();
+          sizeUp.play();
+        }
         
         size += 1;
       }
@@ -145,7 +148,11 @@ class Player
     {
       if(size >= setSize - 30)
       {
-        sizeDown.loop();
+        if(!sizeDown.isPlaying())
+        {
+          sizeDown.rewind();
+          sizeDown.play();
+        }
         
         size -= 1;
       }

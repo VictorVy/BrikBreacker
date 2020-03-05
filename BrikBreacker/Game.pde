@@ -34,7 +34,7 @@ void game()
   player.collide();
   
   if(kills >= myBriks.size())
-  { 
+  {
     winFX.rewind();
     winFX.play();
     
@@ -111,6 +111,12 @@ void gameKR()
       break;
     case 's':
       player.moveDown = false;
+      break;
+    case TAB:
+      pauseFX.rewind();
+      pauseFX.play();
+      get = get();
+      mode = pause;
       break;
   }
 }

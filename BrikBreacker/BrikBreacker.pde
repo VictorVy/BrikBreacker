@@ -17,11 +17,13 @@ AudioPlayer brikHit;
 AudioPlayer wallHit;
 AudioPlayer loseFX;
 AudioPlayer winFX;
+AudioPlayer pauseFX;
 
 final int intro = 0;
 final int game  = 1;
 final int lose = 2;
 final int win = 3;
+final int pause = 4;
 int mode = intro;
 
 color red = #C61A1A;
@@ -46,6 +48,8 @@ int k = 60;
 
 int kills;
 
+PImage get;
+
 void setup()
 {
   size(800, 600, FX2D);
@@ -62,6 +66,7 @@ void setup()
   wallHit = minim.loadFile("wallHit.wav");
   loseFX = minim.loadFile("lose.wav");
   winFX = minim.loadFile("win.wav");
+  pauseFX = minim.loadFile("pause.wav");
   
   introFX.rewind();
   introFX.play();
@@ -74,6 +79,8 @@ void setup()
   
   ball = new Ball(width / 2, height / 1.75, 0, 1, 4, 15);
   player = new Player(width / 2, height + 10, 3, 75, 4);
+  
+  //myBriks.add(new Brik(width / 2, height / 2, 50, 1));
   
   for(int i = 80; i < width; i += 80)
   { 
@@ -120,6 +127,8 @@ void draw()
     lose();
   else if(mode == win) 
     win();
+  else if(mode == pause) 
+    pause();
   else
     println("Mode Error");
 }
