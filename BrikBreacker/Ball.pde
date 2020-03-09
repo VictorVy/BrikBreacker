@@ -2,6 +2,7 @@ class Ball
 {
   PVector position;
   PVector speedVect;
+  final PVector setSpeedVect;
   float speedScalar;
   float direction;
   int size;
@@ -19,6 +20,7 @@ class Ball
     position = new PVector(x, y);
     this.speedScalar = speedScalar;
     speedVect = new PVector(run, rise).mult(speedScalar);
+    setSpeedVect = speedVect;
     this.size = size;
   }
   
@@ -31,7 +33,16 @@ class Ball
   
   void move()
   {
-    position.add(speedVect);
+    println(myBriks.size(), kills);
+    
+    player.position.add(speedVect);
+    
+    //if(kills < myBriks.size() * 0.33 && speedVect == setSpeedVect)
+    //  position.add(speedVect);
+    //else if(kills < myBriks.size() * 0.66)
+    //  position.add(speedVect.mult(1.25));
+    //else
+    //  position.add(speedVect.mult(1.5));
   }
   
   void collisionCheck()
